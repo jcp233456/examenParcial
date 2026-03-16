@@ -15,12 +15,14 @@ namespace examenParcial
     {
         List<Doctor>doctores=new List<Doctor>();
         List<Paciente> pacientes = new List<Paciente>();
-        List<Citas>citas=new List<Citas>();
+        List<Citas>citass=new List<Citas>();
+        List<Reporte>reportes=new List<Reporte>();
         public Form1()
         {
             InitializeComponent();
             LeerDoctores();
             LeerPacientes();
+            LeerCitas();
         }
 
         private void label3_Click(object sender, EventArgs e)
@@ -35,7 +37,7 @@ namespace examenParcial
             cita.Idpaciente = comboBoxPaciente.SelectedValue.ToString();
             cita.Fechacita = dateTimePickerFecha.Value;
             cita.Horacita = dateTimePickerHora.Value;
-            citas.Add(cita);
+            citass.Add(cita);
             GuardarCita();
         }
         private void GuardarCita()
@@ -44,7 +46,7 @@ namespace examenParcial
 
             StreamWriter writer = new StreamWriter(stream);
 
-            foreach (var item in citas)
+            foreach (var item in citass)
             {
                 writer.WriteLine(item.Iddoctor);
                 writer.WriteLine(item.Idpaciente);
@@ -81,6 +83,32 @@ namespace examenParcial
             comboBoxDoctor.DataSource = doctores;
         }
 
+        private void LeerCitas()
+        {
+            string fileName = "citas.txt";
+            FileStream stream = new FileStream(fileName, FileMode.Open, FileAccess.Read);
+            StreamReader reader = new StreamReader(stream);
+
+
+
+            while (reader.Peek() > -1)
+
+            {
+                Citas leercitas = new Citas();
+                leercitas.Iddoctor = reader.ReadLine();
+                leercitas.Idpaciente = reader.ReadLine();
+                leercitas.Fechacita = Convert.ToDateTime(reader.ReadLine());
+                leercitas.Horacita = Convert.ToDateTime(reader.ReadLine());
+
+
+                citass.Add(leercitas);
+
+
+            }
+            reader.Close();
+
+        }
+
         private void LeerPacientes()
         {
             string fileName = "pacientes.txt";
@@ -112,24 +140,26 @@ namespace examenParcial
         {
             LeerDoctores();
             LeerPacientes();
+            LeerCitas();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             dataGridView1.DataSource = null;
-            Citas citas = new Citas();
-            foreach (var item in citas)
+            Reporte reporte= new Reporte();
+            foreach (var item in citass)
             {
-                citas.Iddoctor = comboBoxDoctor.SelectedValue.ToString();
-                citas.Idpaciente = comboBoxPaciente.SelectedValue.ToString();
-                citas.Fechacita = dateTimePickerFecha.Value;
-                citas.Horacita = dateTimePickerHora.Value
+                reporte.Iddoctor = comboBoxDoctor.SelectedValue.ToString();
+                reporte.Idpaciente = comboBoxPaciente.SelectedValue.ToString();
+                reporte.Fechacita = dateTimePickerFecha.Value;
+                reporte.Horacita = dateTimePickerHora.Value;
 
 
                 reportes.Add(reporte);
 
             }
             dataGridView1.DataSource = reportes;
+
         }
     }
 }
