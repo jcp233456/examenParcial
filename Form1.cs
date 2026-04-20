@@ -22,7 +22,7 @@ namespace examenParcial
             InitializeComponent();
             LeerDoctores();
             LeerPacientes();
-            LeerCitas();
+            //LeerCitas();
         }
 
         private void label3_Click(object sender, EventArgs e)
@@ -140,7 +140,7 @@ namespace examenParcial
         {
             LeerDoctores();
             LeerPacientes();
-            LeerCitas();
+            //LeerCitas();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -160,6 +160,18 @@ namespace examenParcial
             }
             dataGridView1.DataSource = reportes;
 
+        }
+
+        private void buttonPorDoctor_Click(object sender, EventArgs e)
+        {
+            reportes = reportes.OrderBy(c => c.Iddoctor).ToList();
+            dataGridView1.DataSource = reportes;
+        }
+
+        private void buttonCantidad_Click(object sender, EventArgs e)
+        {
+            int total = citass.Count;
+            MessageBox.Show("Total de citas registradas" + total);
         }
     }
 }

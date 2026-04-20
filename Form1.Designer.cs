@@ -40,8 +40,10 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.button1 = new System.Windows.Forms.Button();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.buttonPorDoctor = new System.Windows.Forms.Button();
+            this.buttonCantidad = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -156,6 +158,8 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.buttonCantidad);
+            this.tabPage2.Controls.Add(this.buttonPorDoctor);
             this.tabPage2.Controls.Add(this.button1);
             this.tabPage2.Controls.Add(this.dataGridView1);
             this.tabPage2.Location = new System.Drawing.Point(4, 25);
@@ -165,6 +169,16 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(323, 331);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(189, 41);
+            this.button1.TabIndex = 1;
+            this.button1.Text = "Mostrar";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // dataGridView1
             // 
@@ -176,15 +190,25 @@
             this.dataGridView1.Size = new System.Drawing.Size(789, 295);
             this.dataGridView1.TabIndex = 0;
             // 
-            // button1
+            // buttonPorDoctor
             // 
-            this.button1.Location = new System.Drawing.Point(323, 331);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(189, 41);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Mostrar";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.buttonPorDoctor.Location = new System.Drawing.Point(570, 336);
+            this.buttonPorDoctor.Name = "buttonPorDoctor";
+            this.buttonPorDoctor.Size = new System.Drawing.Size(162, 36);
+            this.buttonPorDoctor.TabIndex = 2;
+            this.buttonPorDoctor.Text = "Mostar por doctor";
+            this.buttonPorDoctor.UseVisualStyleBackColor = true;
+            this.buttonPorDoctor.Click += new System.EventHandler(this.buttonPorDoctor_Click);
+            // 
+            // buttonCantidad
+            // 
+            this.buttonCantidad.Location = new System.Drawing.Point(136, 336);
+            this.buttonCantidad.Name = "buttonCantidad";
+            this.buttonCantidad.Size = new System.Drawing.Size(109, 36);
+            this.buttonCantidad.TabIndex = 3;
+            this.buttonCantidad.Text = "Mostrar por cantidad";
+            this.buttonCantidad.UseVisualStyleBackColor = true;
+            this.buttonCantidad.Click += new System.EventHandler(this.buttonCantidad_Click);
             // 
             // Form1
             // 
@@ -220,6 +244,8 @@
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Button buttonPorDoctor;
+        private System.Windows.Forms.Button buttonCantidad;
     }
 }
 
